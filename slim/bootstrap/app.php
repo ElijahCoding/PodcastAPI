@@ -17,4 +17,10 @@ $app = new \Slim\App([
     ]
 ]);
 
+$container = $app->getContainer();
+
+$container['test'] = function () {
+  return 'test';
+};
+
 require_once __DIR__ . '/../routes/api.php';

@@ -9,6 +9,8 @@ class PodcastTransformer extends TransformerAbstract
 {
   public function transform(Podcast $podcast)
   {
-    
+    return [
+      'id' => $podcast->id
+    ];
   }
 }

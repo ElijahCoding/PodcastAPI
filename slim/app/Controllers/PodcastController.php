@@ -3,8 +3,11 @@
 namespace App\Controllers;
 
 use App\Models\Podcast;
+use League\Fractal\{Resource\Item};
+use App\Transformers\PodcastTransformer;
+use App\Controllers\Controller;
 
-class PodcastController
+class PodcastController extends Controller
 {
   public function index($request, $response)
   {
@@ -15,6 +18,7 @@ class PodcastController
 
   public function show($request, $response, $args)
   {
+    die($this->c->test);
     $podcast = Podcast::find($args['id']);
 
     if ($podcast === null) {
@@ -25,6 +29,9 @@ class PodcastController
       ]);
     }
 
-    return $response->withJson($podcast);
+    $transformer = (new Item($podcast,new PodcastTransformer));
+
+
+    return $response->withJson($transformer);
   }
 }
