@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Podcast;
-use League\Fractal\{Resource\Item};
+use League\Fractal\{Resource\Item,Resource\Collection};
 use App\Transformers\PodcastTransformer;
 use App\Controllers\Controller;
 
@@ -13,7 +13,9 @@ class PodcastController extends Controller
   {
     $podcasts = Podcast::latest()->get();
 
-    return $response->withJson($podcasts);
+    $transformer = new Collection($podcasts, new PodcastTransformer);
+
+    return $response->withJson($this->c->fractal->createData($transformer)->toArray());
   }
 
   public function show($request, $response, $args)
