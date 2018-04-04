@@ -19,8 +19,8 @@ $app = new \Slim\App([
 
 $container = $app->getContainer();
 
-$container['test'] = function () {
-  return 'test';
+$container['fractal'] = function () {
+  return new \League\Fractal\Manager();
 };
 
 require_once __DIR__ . '/../routes/api.php';

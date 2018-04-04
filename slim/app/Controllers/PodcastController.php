@@ -18,7 +18,7 @@ class PodcastController extends Controller
 
   public function show($request, $response, $args)
   {
-    die($this->c->test);
+
     $podcast = Podcast::find($args['id']);
 
     if ($podcast === null) {
@@ -32,6 +32,6 @@ class PodcastController extends Controller
     $transformer = (new Item($podcast,new PodcastTransformer));
 
 
-    return $response->withJson($transformer);
+    return $response->withJson($this->c->fractal->createData($transformer)->toArray());
   }
 }
