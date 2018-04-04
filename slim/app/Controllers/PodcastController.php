@@ -15,6 +15,16 @@ class PodcastController
 
   public function show($request, $response, $args)
   {
-    return 'sjhow';
+    $podcast = Podcast::find($args['id']);
+
+    if ($podcast === null) {
+      return $response->withStatus(404)->withJson([
+        'errors' => [
+          'title' => 'Podcast not found'
+          ]
+      ]);
+    }
+
+    return $response->withJson($podcast);
   }
 }
