@@ -25,6 +25,10 @@ class ComposerStaticInit31158ae5bdc9bbed1ebe26813b4a31db
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Container\\' => 14,
         ),
+        'L' => 
+        array (
+            'League\\Fractal\\' => 15,
+        ),
         'I' => 
         array (
             'Interop\\Container\\' => 18,
@@ -76,6 +80,10 @@ class ComposerStaticInit31158ae5bdc9bbed1ebe26813b4a31db
         'Psr\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
+        ),
+        'League\\Fractal\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/league/fractal/src',
         ),
         'Interop\\Container\\' => 
         array (
