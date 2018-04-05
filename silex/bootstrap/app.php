@@ -1,5 +1,6 @@
 <?php
 
+
 require_once __DIR__ . '/../vendor/autoload.php';
 
 
@@ -15,5 +16,11 @@ require_once __DIR__ . '/database.php';
 $app = new Silex\Application([
     'debug' => true
 ]);
+
+$app->register(new \Silex\Provider\ServiceControllerServiceProvider());
+
+$app['podcast.controller'] = function ($app) {
+  return new \App\Controllers\PodcastController;
+};
 
 require_once __DIR__ . '/../routes/api.php';

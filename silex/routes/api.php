@@ -3,8 +3,5 @@
 use App\Models\Podcast;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-$app->get('/podcasts', function () {
-  $podcasts = Podcast::get();
-
-  return new JsonResponse($podcasts);
-});
+$app->get('/podcasts', 'podcast.controller:index');
+$app->get('/podcasts/{id}', 'podcast.controller:show');
