@@ -10,6 +10,7 @@ try {
 
 
 require_once __DIR__ . '/database.php';
+require_once __DIR__ . '/pagination.php';
 
 
 $app = new \Slim\App([
