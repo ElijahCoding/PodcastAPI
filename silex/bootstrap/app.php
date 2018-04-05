@@ -19,8 +19,12 @@ $app = new Silex\Application([
 
 $app->register(new \Silex\Provider\ServiceControllerServiceProvider());
 
+$app['fractal'] = function ($app) {
+  return new \League\Fractal\Manager();
+};
+
 $app['podcast.controller'] = function ($app) {
-  return new \App\Controllers\PodcastController;
+  return new \App\Controllers\PodcastController($app['fractal']);
 };
 
 require_once __DIR__ . '/../routes/api.php';
