@@ -3,37 +3,36 @@
 namespace App\Controllers;
 
 use App\Models\Podcast;
-use League\Fractal\{Resource\Item,Resource\Collection};
 use App\Transformers\PodcastTransformer;
-use App\Controllers\Controller;
+
+use League\Fractal\{
+    Resource\Item,
+    Resource\Collection,
+    Pagination\IlluminatePaginatorAdapter
+};
 
 class PodcastController extends Controller
 {
-  public function index($request, $response)
-  {
-    $podcasts = Podcast::latest()->get();
+    public function index($request, $response)
+    {
+        $podcasts = Podcast::latest()->paginate(2);
 
-    $transformer = new Collection($podcasts, new PodcastTransformer);
+        $transformer = (new Collection($podcasts->getCollection(), new PodcastTransformer))
+            ->setPaginator(new IlluminatePaginatorAdapter($podcasts));
 
-    return $response->withJson($this->c->fractal->createData($transformer)->toArray());
-  }
-
-  public function show($request, $response, $args)
-  {
-
-    $podcast = Podcast::find($args['id']);
-
-    if ($podcast === null) {
-      return $response->withStatus(404)->withJson([
-        'errors' => [
-          'title' => 'Podcast not found'
-          ]
-      ]);
+        return $response->withJson($this->c->fractal->createData($transformer)->toArray());
     }
 
-    $transformer = (new Item($podcast,new PodcastTransformer));
+    public function show($request, $response, $args)
+    {
+        $podcast = Podcast::find($args['id']);
 
+        if ($podcast === null) {
+            return $response->withStatus(404);
+        }
 
-    return $response->withJson($this->c->fractal->createData($transformer)->toArray());
-  }
+        $transformer = new Item($podcast, new PodcastTransformer);
+
+        return $response->withJson($this->c->fractal->createData($transformer)->toArray());
+    }
 }

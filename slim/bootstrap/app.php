@@ -11,6 +11,7 @@ try {
 
 require_once __DIR__ . '/database.php';
 
+
 $app = new \Slim\App([
     'settings' => [
         'displayErrorDetails' => true,

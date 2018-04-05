@@ -33,6 +33,7 @@ class ComposerStaticInit31158ae5bdc9bbed1ebe26813b4a31db
         array (
             'Interop\\Container\\' => 18,
             'Illuminate\\Support\\' => 19,
+            'Illuminate\\Pagination\\' => 22,
             'Illuminate\\Database\\' => 20,
             'Illuminate\\Contracts\\' => 21,
             'Illuminate\\Container\\' => 21,
@@ -92,6 +93,10 @@ class ComposerStaticInit31158ae5bdc9bbed1ebe26813b4a31db
         'Illuminate\\Support\\' => 
         array (
             0 => __DIR__ . '/..' . '/illuminate/support',
+        ),
+        'Illuminate\\Pagination\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/illuminate/pagination',
         ),
         'Illuminate\\Database\\' => 
         array (
