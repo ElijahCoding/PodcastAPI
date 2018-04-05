@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
-class Podcast
+use Illuminate\Database\Eloquent\Model;
+
+class Podcast extends Model
 {
-  
+
 }

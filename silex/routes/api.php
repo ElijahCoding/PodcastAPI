@@ -1,5 +1,10 @@
 <?php
 
+use App\Models\Podcast;
+use Symfony\Component\HttpFoundation\JsonResponse;
+
 $app->get('/podcasts', function () {
-  return 'fda';
+  $podcasts = Podcast::get();
+
+  return new JsonResponse($podcasts);
 });
