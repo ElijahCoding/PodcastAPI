@@ -19,6 +19,8 @@ $app = new \Slim\App([
     ]
 ]);
 
+$app->add(new \App\Middleware\Cors());
+
 $container = $app->getContainer();
 
 $container['fractal'] = function () {
