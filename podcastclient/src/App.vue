@@ -1,18 +1,24 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld/>
+    <top-header></top-header>
+
+    <div class="container">
+      <home></home>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
+
+import TopHeader from './components/TopHeader'
+import Home from './components/Home'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    TopHeader, Home
   }
+
 }
 </script>
 
